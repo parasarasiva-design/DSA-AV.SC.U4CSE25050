@@ -10,23 +10,17 @@ print("LAUNCH----->")'''
 
 
 
-'''def fib_series(n):
-    a=0
-    b=1
-    c=a+b
-    for i in range(n):
-          a=b
-          b=c
-          c=a+b
-          print(c)
-n=int(input("Enter n value:"))
-a=0
-b=1
-c=a+b
-print(a)
-print(b)
-print(c)
-fib_series(n)'''
+'''def fib(n):
+    if n <= 1:
+        return n
+    else:
+        return fib(n - 1) + fib(n - 2)
+
+
+n = int(input("Enter n value: "))
+
+for i in range(n):
+    print(fib(i))'''
 
 
 '''def fact(n):
@@ -55,32 +49,26 @@ a=power(p,n)
 print(a)  '''
 
 
-def search(emp_list,key):
-    n=len(emp_list)
-    for i in range(n):
-        if emp_list[i]==key:
-            print(f"key found at {i} position")
-        
-emp_list=[10,2,9,4,567,69,99]
-key=int(input("enter a key to search in the emp id list"))
-search(emp_list,key)
+'''def search_employee(arr, id, index):
+    if index == len(arr):
+        return -1
 
-def search_empire(emp_list, target, index=0):
-      if index == len(emp_list):
-    return False
+    if arr[index] == id:
+        return index
 
-  if emp_list[index] == target:
-    return True
-
-  return search_empire(emp_list, target, index + 1)
+    return search_employee(arr, id, index + 1)
 
 
+employees = [101, 102, 103, 104, 105]
 
-empires = ["Roman", "Ottoman", "Persian", "Mauryan"]
-target_empire = "Persian"
+id = int(input("Enter employee ID to search: "))
 
-found = search_empire(empires, target_empire)
-print(f"\nIs {target_empire} in the list? {found}")
+result = search_employee(employees, id, 0)
+
+if result == -1:
+    print("Employee ID not found")
+else:
+    print("Employee ID found at position", result)'''
 
 
 
