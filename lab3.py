@@ -50,31 +50,61 @@ for i in range(n):
 sorted_arr = selection_sort(arr)
 print("Sorted array:", sorted_arr)'''
 
-
+'''
 def merge_sort(arr):
-    if len(arr)<=1:
+    if len(arr) <= 1:
         return arr
-    mid=len(arr)//2
-    left=arr[:mid]
-    right=arr[mid:]
-    merge_sort(left)
-    merge_sort(right)
-    i=j=k=0
-    while i<len(left) and j<len(right):
-        if left[i]<=right[i]:
-            arr[k]=left[i]
-            i=i+1
+    mid = len(arr) // 2
+    left = arr[:mid]
+    right = arr[mid:]
+    left = merge_sort(left)
+    right = merge_sort(right)
+    i = j = k = 0
+    while i < len(left) and j < len(right):
+        if left[i] <= right[j]:
+            arr[k] = left[i]
+            i += 1
         else:
-            arr[k]=right[j]
-            j=j+1
-        k=k+1
+            arr[k] = right[j]
+            j += 1
+        k += 1
+    while i < len(left):
+        arr[k] = left[i]
+        i += 1
+        k += 1
+    while j < len(right):
+        arr[k] = right[j]
+        j += 1
+        k += 1
     return arr
-arr=[]
+arr = []
+n = int(input("Enter num of elements: "))
+
+for i in range(n):
+    p = int(input("Enter element: "))
+    arr.append(p)
+
+sorted_arr = merge_sort(arr)
+print("Sorted array:", sorted_arr)'''
+
+'''def quick_sort(arr):
+    if len(arr) <= 1:
+        return arr
+    pivot = arr[-1]
+    left = []
+    right = []
+    for i in range(len(arr) - 1):
+        if arr[i] <= pivot:
+            left.append(arr[i])
+        else:
+            right.append(arr[i])
+    return quick_sort(left) + [pivot] + quick_sort(right)
+arr = []
 n = int(input("Enter num of elements: "))
 for i in range(n):
     p = int(input("Enter element: "))
     arr.append(p)
-sorted_arr = merge_sort(arr)
-print("Sorted array:", sorted_arr)        
-    
+sorted_arr = quick_sort(arr)
+print("Sorted array:", sorted_arr)
 
+'''
