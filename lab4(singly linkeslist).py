@@ -32,12 +32,34 @@ class LinkedList:
         if self.head==None:
             print("there r no items")
         else:
-            c=1
+            c=0
             temp=self.head
             while temp.next:
                 c=c+1
                 temp=temp.next
         print(c)
+    def del_begin(self,data):
+        if self.head==None:
+            return
+        else:
+            temp=self.head
+            self.head=temp.next
+    def del_at_end(self,data):
+        if self.head is None:
+            print('there r no elements')
+        temp=self.head
+        temp1=temp
+        while temp.next:
+            temp1=temp
+            temp=temp.next
+        temp1.next=None
+    def del_at_index(self,index,data):
+        if index==0:
+            self.del_begin(data)
+        else:
+            temp=self.head
+            for i in range(index-1):
+                temp=temp.next
         
 my_list = LinkedList()
 my_list.insert_begin(10)
