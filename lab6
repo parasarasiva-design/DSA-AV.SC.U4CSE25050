@@ -1,0 +1,167 @@
+'''class Queue:
+  def __init__(self, size):
+        self.size = size
+        self.queue = [None] * size
+        self.front = -1
+        self.rear = -1
+  def enqueue(self,x):
+    if self.rear==size-1:
+        print("overflow")
+    else:
+        if self.front==-1:
+            self.front=0
+        self.rear+=1
+        self.queue[self.rear]=x
+        print(f"{x} is enqueued(added) into queue")
+  def dequeue(self):
+    if self.front>self.rear or self.front==-1:
+        print("underflow")
+    else:
+        x=self.queue[self.front]
+        self.queue[self.front]=None
+        self.front+=1
+        print(f"{x} is dequeued(removed) into queue")
+  def display(self):
+        if self.front == -1 or self.front > self.rear:
+            print("Queue is empty: []")
+        else:
+            current_elements = [self.queue[i] for i in range(self.front, self.rear + 1)]
+            print(f"Current Queue: {current_elements}")
+
+qu=Queue()
+qu.enqueue(3,5)
+qu.enqueue(5,5)
+qu.enqueue(7,5)
+qu.dequeue(5)
+qu.enqueue(9,5)
+qu.dequeue(5)
+qu.dequeue(5)
+qu.enqueue(9,5)
+qu.dequeue(5)
+qu.display'''
+
+
+class Queue:
+    def __init__(self, size):
+        self.size = size
+        self.queue = [None] * size
+        self.front = -1
+        self.rear = -1
+
+    def enqueue(self, x):
+        # Check if the queue is full
+        if self.rear == self.size - 1:
+            print("Error: Queue Overflow! Cannot add more elements.")
+        else:
+            # If the queue is empty, initialize front to 0
+            if self.front == -1:
+                self.front = 0
+            self.rear += 1
+            self.queue[self.rear] = x
+            print(f"{x} is enqueued(added) into queue")
+
+    def dequeue(self):
+        # Check if the queue is empty
+        if self.front == -1 or self.front > self.rear:
+            print("Error: Queue Underflow! Cannot remove elements.")
+        else:
+            x = self.queue[self.front]
+            self.queue[self.front] = None
+            self.front += 1
+            print(f"{x} is dequeued(removed) from queue")
+            
+            # Reset pointers if the queue becomes completely empty
+            if self.front > self.rear:
+                self.front = -1
+                self.rear = -1
+
+    def display(self):
+        # Helper method to print the current state of the queue
+        if self.front == -1 or self.front > self.rear:
+            print("Queue is empty: []")
+        else:
+            current_elements = [self.queue[i] for i in range(self.front, self.rear + 1)]
+            print(f"Current Queue: {current_elements}")
+
+
+# --- Menu-Driven Program Loop ---
+def main():
+    try:
+        max_size = int(input("Enter the maximum size of the queue: "))
+    except ValueError:
+        print("Invalid input. Setting default size to 5.")
+        max_size = 5
+
+    # Initialize the queue object
+    q = Queue(max_size)
+
+    while True:
+        print("\n=== QUEUE OPERATIONS MENU ===")
+        print("1. Enqueue (Add Element)")
+        print("2. Dequeue (Remove Element)")
+        print("3. Display Queue")
+        print("4. Exit")
+        
+        choice = input("Enter your choice (1-4): ").strip()
+
+        if choice == "1":
+            try:
+                element = int(input("Enter the integer value to enqueue: "))
+                q.enqueue(element)
+            except ValueError:
+                print("Please enter a valid integer.")
+                
+        elif choice == "2":
+            q.dequeue()
+            
+        elif choice == "3":
+            q.display()
+            
+        elif choice == "4":
+            print("Exiting the program. Goodbye!")
+            break
+            
+        else:
+            print("Invalid choice! Please select an option between 1 and 4.")
+
+if __name__ == "__main__":
+    main()
+
+
+
+
+
+
+
+
+
+
+
+class node:
+    def __init__(self,data):
+        self.data=data
+        self.next=None
+class queue:
+    def __init__(self):
+        self.front=None
+        self.rear=None
+    def enqueue(self,x):
+        new=node(x)
+        if self.rear is None:
+            self.front=new
+            self.rear=new
+        else:
+            self.rear.next=new
+            self.rear=new
+        print(f"{x} is inserted into the queue")
+    def dequeue(self):
+        if self.front==-1:
+            print("no data to delete in queue")
+        else:
+            x=self.front.data
+            self.front=self.front.next
+            if self.front is None:
+                self.rear=None
+            print(f"{x} is deleted from queue")
+            
+    
